@@ -8,7 +8,6 @@ const AddCar = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // تخزين السيارة في localStorage
     const cars = JSON.parse(localStorage.getItem("cars") || "[]");
     const newCar = {
       id: cars.length + 1,
@@ -19,7 +18,6 @@ const AddCar = () => {
     cars.push(newCar);
     localStorage.setItem("cars", JSON.stringify(cars));
 
-    // إعادة تعيين الحقول
     setCarName("");
     setCarType("");
     setCarYear("");
@@ -60,7 +58,10 @@ const AddCar = () => {
             className="w-full border border-gray-300 p-2 rounded-md"
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+        >
           Add Car
         </button>
       </form>

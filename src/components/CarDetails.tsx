@@ -22,9 +22,9 @@ interface MaintenanceEntry {
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate(); // استخدام useNavigate للتوجيه
+  const navigate = useNavigate();
   const [car, setCar] = useState<Car | null>(null);
-  const [isEditing, setIsEditing] = useState(false); // للتحكم في التعديل
+  const [isEditing, setIsEditing] = useState(false);
   const [carName, setCarName] = useState<string>("");
   const [carType, setCarType] = useState<string>("");
   const [carYear, setCarYear] = useState<string>("");
@@ -51,7 +51,7 @@ const CarDetails = () => {
     });
     localStorage.setItem("cars", JSON.stringify(updatedCars));
     setCar({ ...car, name: carName, type: carType, year: carYear });
-    setIsEditing(false); // إغلاق وضع التعديل
+    setIsEditing(false);
   };
 
   const handleDelete = () => {
@@ -59,11 +59,10 @@ const CarDetails = () => {
     const storedCars: Car[] = JSON.parse(localStorage.getItem("cars") || "[]");
     const updatedCars = storedCars.filter((c) => c.id !== car.id);
     localStorage.setItem("cars", JSON.stringify(updatedCars));
-    navigate("/"); // توجيه المستخدم للصفحة الرئيسية بعد الحذف
+    navigate("/");
   };
 
   const handleAddMaintenance = () => {
-    // توجيه المستخدم إلى صفحة إضافة صيانة
     navigate(`/add-maintenance/${id}`);
   };
 
@@ -154,8 +153,6 @@ const CarDetails = () => {
             </table>
           </div>
 
-          {/* Maintenance History */}
-
           {car.maintenanceHistory && car.maintenanceHistory.length > 0 ? (
             <div className="overflow-x-auto mt-4">
               <table className="min-w-full bg-gray-800 text-white rounded-lg shadow-lg">
@@ -200,7 +197,6 @@ const CarDetails = () => {
             <p></p>
           )}
 
-          {/* Edit, Delete, and Add Maintenance Buttons */}
           <div className="mt-6 flex space-x-4">
             <button
               onClick={() => setIsEditing(true)}

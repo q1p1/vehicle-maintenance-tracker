@@ -14,8 +14,7 @@ const HomePage = () => {
   const [cars, setCars] = useState<Car[]>([]);
 
   useEffect(() => {
-    // استرجاع السيارات من localStorage
-    const storedCars: Car[] = JSON.parse(localStorage.getItem("cars") || "[]");
+     const storedCars: Car[] = JSON.parse(localStorage.getItem("cars") || "[]");
     setCars(storedCars);
   }, []);
 
@@ -26,8 +25,7 @@ const HomePage = () => {
           Car List
         </h1>
 
-        {/* جدول عرض السيارات */}
-        <div className="overflow-x-auto">
+         <div className="overflow-x-auto">
           <table className="min-w-full bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden">
             <thead className="bg-gray-700 text-gray-300">
               <tr>
